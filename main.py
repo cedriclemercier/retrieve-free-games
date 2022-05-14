@@ -45,11 +45,14 @@ async def get_pcgamer():
             gametitle = game.text
             link = game.attrs["href"]
             game_list.append((gametitle, link))
+            
+        print(f'Found {len(game_list)} free games')
     except:
         print(f"Issue retreving data from {URL_PCGAMER}")
         
     
     try:
+        print("Sending to discord..")
         message = format_for_discord(title, game_list)
         send_to_discord(message)
     except:
